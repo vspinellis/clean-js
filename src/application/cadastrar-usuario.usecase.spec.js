@@ -3,7 +3,8 @@ const cadastrarUsuarioUseCase = require('./cadastrar-usuario.usecase');
 
 describe('Cadastrar usuario UseCase', function () {
   const usuariosRepository = {
-    cadastrar: jest.fn()
+    cadastrar: jest.fn(),
+    existePorCPF: jest.fn()
   };
 
   test('Deve poder cadastrar um usuario', async function () {
@@ -32,5 +33,19 @@ describe('Cadastrar usuario UseCase', function () {
     await expect(() => sut({})).rejects.toThrow(
       new AppError(AppError.parametrosObrigatoriosAusentes)
     );
+  });
+
+  test('Deve retornar um throw AppError se já existir um cadastro com o CPF', function () {
+    usuariosRepository.existePorCPF.mockResolvedValue(true);
+    const usuarioDTO = {
+      nome_completo: 'nome_valido',
+      CPF: 'CPF_ja_cadastrado',
+      telefone: 'telefone_valido',
+      endereco: 'endereco_valido',
+      email: 'email_valido'
+    };
+
+    const sut = cadastrarUsuarioUseCase({ usuariosRepository });
+    expect(() => sut(usuarioDTO)).rejects.toThrow(new AppError('CPF já cadastrado'));
   });
 });
