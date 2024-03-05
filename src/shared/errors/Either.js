@@ -1,5 +1,5 @@
 /**
- * @description: ATENÇÃO, esta clase não deve ser instânciada diretamente, use um dos métodos Left ou Right
+ * @description: ATENÇÃO, esta classe não deve ser instânciada diretamente, use um dos métodos Left ou Right
  */
 module.exports = class Either {
   constructor(left, right) {
