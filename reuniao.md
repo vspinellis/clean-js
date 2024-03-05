@@ -9,7 +9,7 @@
 - Emprestimo: [usuario_id, livro_id, data_retorno, data_devolucao, data_saida]
 
 ## UseCases (Regras de negócio)
-[] Cadastrar um novo usuário
+[X] Cadastrar um novo usuário
 [] - CPF ou email devem ser únicos
 
 [] Buscar um cadastro de usuário por CPF
