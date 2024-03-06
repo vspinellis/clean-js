@@ -34,7 +34,7 @@ describe('Cadastrar Livro UseCase', function () {
     );
   });
 
-  test('Dever retonar um Either.Left Either.valorJaCadastrado("ISBN") se já existir um ISBN cadastrado para um livro', async function () {
+  test('Deve retonar um Either.Left Either.valorJaCadastrado("ISBN") se já existir um ISBN cadastrado para um livro', async function () {
     livrosRepository.existePorISBN.mockReturnValue(true);
     const livroDTO = {
       nome: 'nome_valido',
@@ -47,7 +47,7 @@ describe('Cadastrar Livro UseCase', function () {
     const sut = cadastrarLivroUseCase({ livrosRepository });
     const output = await sut(livroDTO);
 
-    expect(output.left).toEqual(Either.valorJaCadastrado('CPF'));
+    expect(output.left).toEqual(Either.valorJaCadastrado('ISBN'));
     expect(livrosRepository.existePorISBN).toHaveBeenCalledWith(livroDTO.ISBN);
     expect(livrosRepository.existePorISBN).toHaveBeenCalledTimes(1);
   });
