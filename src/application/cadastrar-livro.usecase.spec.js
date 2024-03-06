@@ -25,4 +25,11 @@ describe('Cadastrar Livro UseCase', function () {
   test('Deve retornar um throw AppError se o livrosRepository não for fornecido', function () {
     expect(() => cadastrarLivroUseCase({})).toThrow(new AppError(AppError.dependencias));
   });
+
+  test('Deve retornar um throw AppError se os campos obrigatórios não forem fornecidos', async function () {
+    const sut = cadastrarLivroUseCase({ livrosRepository });
+    await expect(() => sut({})).rejects.toThrow(
+      new AppError(AppError.parametrosObrigatoriosAusentes)
+    );
+  });
 });
