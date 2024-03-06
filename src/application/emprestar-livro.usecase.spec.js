@@ -1,5 +1,5 @@
-const { Either } = require('../shared/errors');
-const emprestarLivrosUseCase = require('./emprestar-livro.usecase');
+const { Either, AppError } = require('../shared/errors');
+const emprestarLivroUseCase = require('./emprestar-livro.usecase');
 
 describe('Emprestar livro UseCase', function () {
   const emprestimosRepository = {
@@ -15,7 +15,7 @@ describe('Emprestar livro UseCase', function () {
       data_retorno: new Date('2024-02-16')
     };
 
-    const sut = emprestarLivrosUseCase({ emprestimosRepository });
+    const sut = emprestarLivroUseCase({ emprestimosRepository });
     const output = await sut(emprestarLivroDTO);
 
     expect(output.right).toBeNull();
@@ -31,7 +31,7 @@ describe('Emprestar livro UseCase', function () {
       data_retorno: new Date('2024-02-15')
     };
 
-    const sut = emprestarLivrosUseCase({ emprestimosRepository });
+    const sut = emprestarLivroUseCase({ emprestimosRepository });
     const output = await sut(emprestarLivroDTO);
 
     expect(output.left).toBe(Either.dataRetornoMenorQueDataSaida);
@@ -46,7 +46,7 @@ describe('Emprestar livro UseCase', function () {
       data_retorno: new Date('2024-02-16')
     };
 
-    const sut = emprestarLivrosUseCase({ emprestimosRepository });
+    const sut = emprestarLivroUseCase({ emprestimosRepository });
     const output = await sut(emprestarLivroDTO);
 
     expect(output.left).toBe(Either.livroComISBNJaEmprestadoPendenteUsuario);
@@ -55,5 +55,16 @@ describe('Emprestar livro UseCase', function () {
       usuario_id: emprestarLivroDTO.usuario_id
     });
     expect(emprestimosRepository.existeLivroISBNEmprestadoPendenteUsuario).toHaveBeenCalledTimes(1);
+  });
+
+  test('Deve retornar um throw AppErrpor se o emprestimosRepository não for fornecido', function () {
+    expect(() => emprestarLivroUseCase({})).toThrow(new AppError(AppError.dependencias));
+  });
+
+  test('Deve retornar um throw AppError se algum campo obrigatório não for fornecido', async function () {
+    const sut = emprestarLivroUseCase({ emprestimosRepository });
+    await expect(() => sut({})).rejects.toThrow(
+      new AppError(AppError.parametrosObrigatoriosAusentes)
+    );
   });
 });
