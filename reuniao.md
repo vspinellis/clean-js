@@ -12,8 +12,8 @@
 [X] Cadastrar um novo usuário
 [X] - CPF ou email devem ser únicos
 
-[] Buscar um cadastro de usuário por CPF
-[] - Retornar um usuário ou vazio
+[X] Buscar um cadastro de usuário por CPF
+[X] - Retornar um usuário ou vazio
 
 [] Cadastrar um novo livro
 [] - ISBN deve ser único
