@@ -22,7 +22,7 @@
 [X] - Retornar os livros ou vazio
 
 [X] Emprestar um livro ao usuario
-[] - A data de retorno não pode ser menor que a data de saída
+[X] - A data de retorno não pode ser menor que a data de saída
 [] - Um usuário não pode estar com mais de um livro com o mesmo ISBN ao mesmo tempo
 [] - Um usuário pode estar com mais de um livro com ISBN diferentes ao mesmo tempo
 [] - Ao cadastrar um empréstimo, será enviado um email automaticamente informando o nome do livro, nome do usuário, CPF, a data de saída e a data de retorno

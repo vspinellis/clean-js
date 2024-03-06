@@ -13,7 +13,7 @@ module.exports = function emprestarLivroUseCase({ emprestimosRepository }) {
         livro_id
       });
     if (existeLivroISBNEmprestadoPendenteUsuario)
-      return Either.livroComISBNJaEmprestadoPendenteUsuario;
+      return Either.Left(Either.livroComISBNJaEmprestadoPendenteUsuario);
     await emprestimosRepository.emprestar({
       usuario_id,
       livro_id,
