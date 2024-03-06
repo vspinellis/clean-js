@@ -6,7 +6,7 @@ module.exports = function emprestarLivroUseCase({ emprestimosRepository }) {
     const checaCampos = usuario_id && livro_id && data_saida && data_retorno;
     if (!checaCampos) throw new AppError(AppError.parametrosObrigatoriosAusentes);
     if (data_saida.getTime() > data_retorno.getTime())
-      return Either.length(Either.dataRetornoMenorQueDataSaida);
+      return Either.Left(Either.dataRetornoMenorQueDataSaida);
     const existeLivroISBNEmprestadoPendenteUsuario =
       await emprestimosRepository.existeLivroISBNEmprestadoPendenteUsuario({
         usuario_id,
