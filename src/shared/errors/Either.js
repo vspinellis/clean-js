@@ -18,4 +18,12 @@ module.exports = class Either {
   static valorJaCadastrado(valor) {
     return { message: `${valor} já cadastrado.` };
   }
+
+  static dataRetornoMenorQueDataSaida() {
+    return { message: 'Data de retorno menor que a data de saída' };
+  }
+
+  static livroComISBNJaEmprestadoPendenteUsuario() {
+    return { message: 'Livro com ISBN já emprestado ao usuário e ainda não devolvido' };
+  }
 };
