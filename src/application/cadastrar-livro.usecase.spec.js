@@ -1,4 +1,5 @@
-const cadastrarLivroUsecase = require('./cadastrar-livro.usecase');
+const { AppError } = require('../shared/errors');
+const cadastrarLivroUseCase = require('./cadastrar-livro.usecase');
 
 describe('Cadastrar Livro UseCase', function () {
   const livrosRepository = {
@@ -13,11 +14,15 @@ describe('Cadastrar Livro UseCase', function () {
       ISBN: 'ISBN_valido'
     };
 
-    const sut = cadastrarLivroUsecase({ livrosRepository });
+    const sut = cadastrarLivroUseCase({ livrosRepository });
     const output = await sut(livroDTO);
 
     expect(output.right).toBeNull();
     expect(livrosRepository.cadastrar).toHaveBeenCalledWith(livroDTO);
     expect(livrosRepository.cadastrar).toHaveBeenCalledTimes(1);
+  });
+
+  test('Deve retornar um throw AppError se o livrosRepository não for fornecido', function () {
+    expect(() => cadastrarLivroUseCase({})).toThrow(new AppError(AppError.dependencias));
   });
 });
