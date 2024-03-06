@@ -15,7 +15,7 @@
 [X] Buscar um cadastro de usuário por CPF
 [X] - Retornar um usuário ou vazio
 
-[] Cadastrar um novo livro
+[X] Cadastrar um novo livro
 [] - ISBN deve ser único
 
 [] Buscar um livro por nome ou ISBN
@@ -38,3 +38,6 @@
 [] cadastrar: ({nome_completo, CPF, telefone, endereco, email}) => Promise<void>
 [] existePorCPF(CPF) => Promise<boolean>
 [] existePorEmail(email) => Promise<boolean>
+
+## livrosRepository
+[] cadastrar: ({ nome, quantidade, autor, genero, ISBN}) => Promise<void>
