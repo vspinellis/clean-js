@@ -1,3 +1,4 @@
+const { AppError } = require('../shared/errors');
 const buscarLivrosPorNomeOuIsbnUseCase = require('./buscar-livros-por-nome-ou-isbn.usecase');
 
 describe('Buscar livros por nome ou ISBN UseCase', function () {
@@ -38,7 +39,11 @@ describe('Buscar livros por nome ou ISBN UseCase', function () {
     const output = await sut(nomeISBNDTO);
 
     expect(output.right).toEqual([]);
-    expect(livrosRepository.buscarPorNomeOuISBN).toHaveBeenLastCalledWith(nomeISBNDTO.valor);
+    expect(livrosRepository.buscarPorNomeOuISBN).toHaveBeenCalledWith(nomeISBNDTO.valor);
     expect(livrosRepository.buscarPorNomeOuISBN).toHaveBeenCalledTimes(1);
+  });
+
+  test('Deve retonar um throw AppError se o livrosRepository não for fornecido', function () {
+    expect(() => buscarLivrosPorNomeOuIsbnUseCase({})).toThrow(new AppError(AppError.dependencias));
   });
 });
