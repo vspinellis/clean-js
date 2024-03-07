@@ -1,3 +1,4 @@
+const { AppError } = require('../../shared/errors');
 const emprestimoEntity = require('./emprestimo.entity');
 
 describe('Emprestimos Entity', function () {
@@ -17,5 +18,11 @@ describe('Emprestimos Entity', function () {
     });
 
     expect(resultado).toBe('Multa por atraso: R$ 10,00');
+  });
+
+  test('calcularMulta - retornar um throw AppError se os campos obrigatórias não forem fornecidos', function () {
+    expect(() => emprestimoEntity.calcularMulta({})).toThrow(
+      AppError.parametrosObrigatoriosAusentes
+    );
   });
 });
