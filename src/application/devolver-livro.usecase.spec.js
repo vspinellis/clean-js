@@ -1,3 +1,5 @@
+const devolverLivroUseCase = require('./devolver-livro.usecase');
+
 describe('Devolver livro UseCase', function () {
   const emprestimosRepository = {
     devolver: jest.fn()
