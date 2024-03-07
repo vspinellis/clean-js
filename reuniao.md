@@ -35,7 +35,7 @@
 ## Estruturas
 
 ## UsuariosRepository
-[] cadastrar: ({nome_completo, CPF, telefone, endereco, email}) => Promise<void>
+[X] cadastrar: ({nome_completo, CPF, telefone, endereco, email}) => Promise<void>
 [] existePorCPF(CPF) => Promise<boolean>
 [] existePorEmail(email) => Promise<boolean>
 
