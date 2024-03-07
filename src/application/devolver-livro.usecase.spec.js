@@ -6,9 +6,6 @@ describe('Devolver livro UseCase', function () {
   };
 
   test('Deve ser possível devolver um livro sem multa', async function () {
-    emprestimosRepository.devolver.mockResolvedValue({
-      data_retorno: new Date('2024-02-16')
-    });
     const devolverLivroDTO = {
       emprestimo_id: 'qualquer_id',
       data_devolucao: new Date('2024-02-16')
