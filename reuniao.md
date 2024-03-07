@@ -27,7 +27,7 @@
 [X] - Um usuário pode estar com mais de um livro com ISBN diferentes ao mesmo tempo
 [X] - Ao cadastrar um empréstimo, será enviado um email automaticamente informando o nome do livro, nome do usuário, CPF, a data de saída e a data de retorno
 
-[] Devolver o livro emprestado
+[] Devolver o livro emprestado sem multa
 [] - Caso o usuário tenha atrasado, será gerada uma multa fixa de R$ 10,00
 
 [] Mostrar todos os empréstimos pendentes, com o nome do livro, nome do usuário, CPF, data de saída e data de retorno. Ordenados pela data de retorno mais antiga
@@ -46,5 +46,4 @@
 
 ## emprestimosRepository
 [] emprestar({ livro_id, usuario_id, data_saida, data_retorno }) => Promise<void>
-[] existeLivroISBNEmprestadoPendenteUsuario: ({ usuario_id, livro_id}) => Promise<boolean>
-[] buscarEmprestimoComLivroComUsuarioPorID(id) => Promise<Emprestimo & {Livro: {nome}, Usuario: {nome_completo, CPF, email}}>
+[] buscarEmprestimoComLivroComUsuarioPorID: (id) => Promise<Emprestimo & {Livro: {nome}, Usuario: {nome_completo, CPF, email}}>

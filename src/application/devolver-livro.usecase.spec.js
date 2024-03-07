@@ -1,5 +1,3 @@
-const devolverLivroUseCase = require('./devolver-livro.usecase');
-
 describe('Devolver livro UseCase', function () {
   const emprestimosRepository = {
     devolver: jest.fn()
@@ -14,7 +12,7 @@ describe('Devolver livro UseCase', function () {
     const sut = devolverLivroUseCase({ emprestimosRepository });
     const output = await sut(devolverLivroDTO);
 
-    expect(output.right).toEqual('Multa por atraso: R$ 0');
+    expect(output.right).toBe('Multa por atraso: R$ 0');
     expect(emprestimosRepository.devolver).toHaveBeenCalledWith(devolverLivroDTO);
     expect(emprestimosRepository.devolver).toHaveBeenCalledTimes(1);
   });
