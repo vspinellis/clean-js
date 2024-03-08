@@ -1,3 +1,5 @@
+const { livrosRepository } = require('./livros.repository');
+
 describe('Livros Repository Typeorm', function () {
   let sut;
 
