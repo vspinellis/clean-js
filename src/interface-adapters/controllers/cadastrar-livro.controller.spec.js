@@ -26,4 +26,26 @@ describe('Cadastrar livro Controller', function () {
     expect(cadastrarLivroUseCase).toHaveBeenCalledWith(httpRequest.body);
     expect(cadastrarLivroUseCase).toHaveBeenCalledTimes(1);
   });
+
+  test('Deve retornar um httpResponse 400 e message se o livro não for cadastrado com sucesso por lógica no useCase', async function () {
+    cadastrarLivroUseCase.mockResolvedValue(Either.Left({ message: 'validacao_invalida' }));
+    const httpRequest = {
+      body: {
+        nome: 'qualquer_nome',
+        quantidade: 1,
+        autor: 'qualquer_autor',
+        genero: 'qualquer_genero',
+        ISBN: 'qualquer_ISBN'
+      }
+    };
+
+    const response = await cadastrarLivroController({
+      cadastrarLivroUseCase,
+      httpRequest
+    });
+
+    expect(response).toEqual(httpResponse(400, 'validacao_invalida'));
+    expect(cadastrarLivroUseCase).toHaveBeenCalledWith(httpRequest.body);
+    expect(cadastrarLivroUseCase).toHaveBeenCalledTimes(1);
+  });
 });
