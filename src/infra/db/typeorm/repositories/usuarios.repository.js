@@ -33,7 +33,17 @@ const usuariosRepository = function () {
     return usuario === 0 ? false : true;
   };
 
-  return { cadastrar, buscarPorCPF, existePorCPF };
+  const existePorEmail = async function (email) {
+    const usuario = await typeormUsuariosRepository.count({
+      where: {
+        email
+      }
+    });
+
+    return usuario === 0 ? false : true;
+  };
+
+  return { cadastrar, buscarPorCPF, existePorCPF, existePorEmail };
 };
 
 module.exports = { usuariosRepository, typeormUsuariosRepository };
