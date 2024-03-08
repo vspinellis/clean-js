@@ -43,4 +43,10 @@ describe('Usuarios Repository', function () {
 
     expect(existePorCPF).toBe(true);
   });
+
+  test('Deve retornar false se não existir um usuario por CPF', async function () {
+    const existePorCPF = await sut.existePorCPF('CPF_invalido');
+
+    expect(existePorCPF).toBe(false);
+  });
 });
