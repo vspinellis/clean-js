@@ -43,7 +43,7 @@
 ## livrosRepository
 [X] cadastrar: ({ nome, quantidade, autor, genero, ISBN}) => Promise<void>
 [X] existePorISBN: (ISBN) => Promise<boolean>
-[] buscarPorNomeOuISBN: (valor) => Promise<array<Livro>>
+[X] buscarPorNomeOuISBN: (valor) => Promise<array<Livro>>
 
 ## emprestimosRepository
 [] emprestar({ livro_id, usuario_id, data_saida, data_retorno }) => Promise<void>
