@@ -58,7 +58,7 @@ describe('Usuarios Repository', function () {
   });
 
   test('Deve retornar false se não existir um usuario por Email', async function () {
-    const existePorEmail = await sut.existePorCPF('email_invalido');
+    const existePorEmail = await sut.existePorEmail('email_invalido');
 
     expect(existePorEmail).toBe(false);
   });
