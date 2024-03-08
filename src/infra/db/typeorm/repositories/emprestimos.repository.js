@@ -12,7 +12,19 @@ const emprestimosRepository = function () {
     });
   };
 
-  return { emprestar };
+  const devolver = async function ({ emprestimo_id, data_devolucao }) {
+    await typeormEmprestimosRepository.update(emprestimo_id, {
+      data_devolucao
+    });
+
+    const { data_retorno } = await typeormEmprestimosRepository.findOneBy({
+      id: emprestimo_id
+    });
+
+    return { data_retorno };
+  };
+
+  return { emprestar, devolver };
 };
 
 module.exports = { typeormEmprestimosRepository, emprestimosRepository };
