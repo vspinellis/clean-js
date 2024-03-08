@@ -1,4 +1,4 @@
-const { Either } = require('../../shared/errors');
+const { Either, AppError } = require('../../shared/errors');
 const httpResponse = require('../../shared/helpers/http.response');
 const cadastrarLivroController = require('./cadastrar-livro.controller');
 
@@ -47,5 +47,11 @@ describe('Cadastrar livro Controller', function () {
     expect(response).toEqual(httpResponse(400, 'validacao_invalida'));
     expect(cadastrarLivroUseCase).toHaveBeenCalledWith(httpRequest.body);
     expect(cadastrarLivroUseCase).toHaveBeenCalledTimes(1);
+  });
+
+  test('Deve retornar um throw AppError se o cadastrarLivroUseCase e o httpRequest não forem fornecidos', async function () {
+    await expect(() => cadastrarLivroController({})).rejects.toThrow(
+      new AppError(AppError.dependencias)
+    );
   });
 });
