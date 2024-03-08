@@ -41,7 +41,7 @@
 [X] existePorEmail(email) => Promise<boolean>
 
 ## livrosRepository
-[] cadastrar: ({ nome, quantidade, autor, genero, ISBN}) => Promise<void>
+[X] cadastrar: ({ nome, quantidade, autor, genero, ISBN}) => Promise<void>
 [] existePorISBN: (ISBN) => Promise<boolean>
 [] buscarPorNomeOuISBN: (valor) => Promise<array<Livro>>
 
