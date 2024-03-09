@@ -13,7 +13,7 @@ module.exports = async function devolverLivroController({ devolverLivroUseCase, 
 
   const output = await devolverLivroUseCase({
     emprestimo_id,
-    data_devolucao: new Date(data_devolucao)
+    data_devolucao
   });
 
   return output.fold(
