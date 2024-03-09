@@ -1,3 +1,4 @@
+const { ZodError } = require('zod');
 const { Either, AppError } = require('../../shared/errors');
 const httpResponse = require('../../shared/helpers/http.response');
 const devolverLivroController = require('./devolver-livro.controller');
@@ -32,5 +33,17 @@ describe('Devolver livro Controller', function () {
     await expect(() => devolverLivroController({})).rejects.toThrow(
       new AppError(AppError.dependencias)
     );
+  });
+
+  test('Deve retornar um erro do zod se algum campo obrigatório não for fornecido', async function () {
+    const httpRequest = {
+      body: {},
+      params: {
+        emprestimo_id: '1'
+      }
+    };
+    await expect(() =>
+      devolverLivroController({ devolverLivroUseCase, httpRequest })
+    ).rejects.toThrow(ZodError);
   });
 });
