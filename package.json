@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "node --watch ./src/main/api/server.js",
-    "test": "jest --runInBand"
+    "test": "NODE_ENV=test jest --runInBand",
+    "test:integration": "NODE_ENV=integration jest --config=jest.integration.js --runInBand"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.25",
     "jest": "^29.7.0",
     "sqlite3": "^5.1.7"
   },
