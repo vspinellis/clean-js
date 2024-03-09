@@ -1,4 +1,4 @@
-const { Either } = require('../../shared/errors');
+const { Either, AppError } = require('../../shared/errors');
 const httpResponse = require('../../shared/helpers/http.response');
 const devolverLivroController = require('./devolver-livro.controller');
 
@@ -26,5 +26,11 @@ describe('Devolver livro Controller', function () {
       ...httpRequest.params
     });
     expect(devolverLivroUseCase).toHaveBeenCalledTimes(1);
+  });
+
+  test('Deve retornar um erro se o devolverLivroUsecase e httpRequest não forem fornecidos', async function () {
+    await expect(() => devolverLivroController({})).rejects.toThrow(
+      new AppError(AppError.dependencias)
+    );
   });
 });
