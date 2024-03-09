@@ -1,4 +1,4 @@
-const { Either } = require('../../shared/errors');
+const { Either, AppError } = require('../../shared/errors');
 const httpResponse = require('../../shared/helpers/http.response');
 const buscarLivroPorNomeOuIsbnController = require('./buscar-livro-por-nome-ou-isbn.controller');
 
@@ -48,5 +48,11 @@ describe('Buscar livro por nome ou ISBN Controller', function () {
     expect(response).toEqual(httpResponse(200, []));
     expect(buscarLivroPorNomeOuISBNUseCase).toHaveBeenCalledWith(httpRequest.query);
     expect(buscarLivroPorNomeOuISBNUseCase).toHaveBeenCalledTimes(1);
+  });
+
+  test('Deve retornar um throw AppError se o buscarLivroPorNomeOuISBN e httpRequest não forem fornecidos', function () {
+    expect(() => buscarLivroPorNomeOuIsbnController({})).rejects.toThrow(
+      new AppError(AppError.dependencias)
+    );
   });
 });
