@@ -19,7 +19,7 @@ const zodValidator = z.object({
 module.exports = async function emprestarLivroController({ emprestarLivroUseCase, httpRequest }) {
   const { livro_id, usuario_id, data_saida, data_retorno } = zodValidator.parse(httpRequest.body);
 
-  const output = emprestarLivroUseCase({
+  const output = await emprestarLivroUseCase({
     livro_id,
     usuario_id,
     data_saida: new Date(data_saida),
