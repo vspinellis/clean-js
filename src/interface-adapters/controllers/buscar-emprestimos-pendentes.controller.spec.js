@@ -1,5 +1,5 @@
 const buscarPendentesFixture = require('../../../tests/fixtures/buscar-pendentes');
-const { Either } = require('../../shared/errors');
+const { Either, AppError } = require('../../shared/errors');
 const httpResponse = require('../../shared/helpers/http.response');
 const buscarEmprestimosPendentesController = require('./buscar-emprestimos-pendentes.controller');
 
@@ -12,5 +12,11 @@ describe('Buscar Emprestimos Pendentes Controller', function () {
     });
 
     expect(response).toEqual(httpResponse(200, buscarPendentesFixture));
+  });
+
+  test('Deve retornar um erro se o buscrEmprestimosPendentesUseCase não for fornecido', async function () {
+    await expect(() => buscarEmprestimosPendentesController({})).rejects.toThrow(
+      new AppError(AppError.dependencias)
+    );
   });
 });
