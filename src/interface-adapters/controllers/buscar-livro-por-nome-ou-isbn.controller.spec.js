@@ -31,4 +31,22 @@ describe('Buscar livro por nome ou ISBN Controller', function () {
     expect(buscarLivroPorNomeOuISBNUseCase).toHaveBeenCalledWith(httpRequest.query);
     expect(buscarLivroPorNomeOuISBNUseCase).toHaveBeenCalledTimes(1);
   });
+
+  test('Deve retornar um httpResponse 200 e um array vazio se não livros forem encontrados com o valor informado', async function () {
+    buscarLivroPorNomeOuISBNUseCase.mockResolvedValue(Either.Right([]));
+    const httpRequest = {
+      query: {
+        valor: 'nome_valido'
+      }
+    };
+
+    const response = await buscarLivroPorNomeOuIsbnController({
+      buscarLivroPorNomeOuISBNUseCase,
+      httpRequest
+    });
+
+    expect(response).toEqual(httpResponse(200, []));
+    expect(buscarLivroPorNomeOuISBNUseCase).toHaveBeenCalledWith(httpRequest.query);
+    expect(buscarLivroPorNomeOuISBNUseCase).toHaveBeenCalledTimes(1);
+  });
 });
