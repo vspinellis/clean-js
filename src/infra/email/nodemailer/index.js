@@ -18,8 +18,8 @@ module.exports = function nodemailerService() {
       }
     });
 
-    const data_saida_BR = data_saida.toLocaleDateString('pt-BR');
-    const data_retorno_BR = data_retorno.toLocaleDateString('pt-BR');
+    const data_saida_BR = data_saida.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+    const data_retorno_BR = data_retorno.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 
     await transporter.sendMail({
       from: '"Biblioteca UNI" <contato@uni.com>',
