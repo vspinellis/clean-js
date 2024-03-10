@@ -1,3 +1,4 @@
+const buscarEmprestimosPendentesCompose = require('../composers/buscar-emprestimos-pendentes.compose');
 const devolverLivroCompose = require('../composers/devolver-livro.compose');
 const emprestarLivroCompose = require('../composers/emprestar-livro.compose');
 
@@ -21,6 +22,11 @@ emprestimosRoutes.put('/devolver/:emprestimo_id', async (request, response) => {
   };
 
   const { statusCode, body } = await devolverLivroCompose(httpRequest);
+  return response.status(statusCode).json(body);
+});
+
+emprestimosRoutes.get('/', async (request, response) => {
+  const { statusCode, body } = await buscarEmprestimosPendentesCompose();
   return response.status(statusCode).json(body);
 });
 
