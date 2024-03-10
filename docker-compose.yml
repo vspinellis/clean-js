@@ -8,3 +8,7 @@ services:
       - POSTGRESQL_USERNAME=postgres
       - POSTGRESQL_PASSWORD=postgres
       - POSTGRESQL_DATABASE=biblioteca_test
+  redis:
+    image: 'redis:alpine'
+    ports:
+      - 6379:6379
