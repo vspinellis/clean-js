@@ -47,8 +47,16 @@ describe('Usuarios Routes', function () {
     await typeormUsuariosRepository.save(usuarioDTO);
 
     const { statusCode, body } = await request(app).get('/usuarios/cpf/123.123.123-12');
+
     expect(body.id).toBeDefined();
     expect(statusCode).toBe(200);
     expect(body).toEqual(expect.objectContaining(usuarioDTO));
+  });
+
+  test('Deve retornar um usuario ao buscar pelo CPF', async function () {
+    const { statusCode, body } = await request(app).get('/usuarios/cpf/123.123.123-12');
+
+    expect(statusCode).toBe(200);
+    expect(body).toBeNull();
   });
 });
