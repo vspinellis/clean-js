@@ -1,0 +1,5 @@
+- Quantidade não pode ser menor que 0 ao cadastrar um livro
+- Poder editar um livro
+- Poder editar um usuário
+- Não permitir que um empréstimo já devolvido seja devolvido de novo
+- Checar se ao devolver, a data de devolução não é menor que a data de retorno 
