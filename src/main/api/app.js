@@ -15,7 +15,7 @@ app.use(function (error, request, response, next) {
     return response.status(400).json({ message: 'Erro na validação', erros: error.flatten() });
   }
   if (process.env.NODE !== 'production') console.log(error);
-  return respons.status(500).json({ message: 'Erro interno do servidor' });
+  return response.status(500).json({ message: 'Erro interno do servidor' });
 });
 
 module.exports = { app };

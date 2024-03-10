@@ -7,6 +7,6 @@ const routes = Router();
 
 routes.use('/usuarios', usuariosRoutes);
 routes.use('/livros', livrosRoutes);
-router.use('/emprestimos', emprestimosRoutes);
+routes.use('/emprestimos', emprestimosRoutes);
 
 module.exports = { routes };

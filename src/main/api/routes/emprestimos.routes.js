@@ -1,6 +1,6 @@
 const emprestarLivroCompose = require('../composers/emprestar-livro.compose');
 
-const { Router } = requrire('express');
+const { Router } = require('express');
 
 const emprestimosRoutes = Router();
 

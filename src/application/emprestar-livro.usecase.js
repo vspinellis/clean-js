@@ -28,7 +28,7 @@ module.exports = function emprestarLivroUseCase({ emprestimosRepository, emailSe
     await emailService.enviarEmail({
       data_saida,
       data_retorno,
-      nome_usuario: usuario.nome,
+      nome_usuario: usuario.nome_completo,
       CPF: usuario.CPF,
       email: usuario.email,
       nome_livro: livro.nome

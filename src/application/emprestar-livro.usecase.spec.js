@@ -16,7 +16,7 @@ describe('Emprestar livro UseCase', function () {
     emprestimosRepository.emprestar.mockResolvedValue('qualquer_id');
     emprestimosRepository.buscarEmprestimoComLivroComUsuarioPorID.mockResolvedValue({
       usuario: {
-        nome: 'qualquer_nome_usuario',
+        nome_completo: 'qualquer_nome_usuario',
         CPF: 'qualquer_CPF',
         email: 'qualquer_email'
       },
