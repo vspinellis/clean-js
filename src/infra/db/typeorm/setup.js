@@ -27,7 +27,6 @@ if (process.env.NODE_ENV === 'test') {
     type: 'postgres',
     host: 'localhost',
     database: 'biblioteca',
-    synchronize: true,
     port: 5432,
     username: 'postgres',
     password: 'postgres',
