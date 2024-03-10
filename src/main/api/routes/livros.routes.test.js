@@ -56,4 +56,13 @@ describe('Livros Routes', function () {
     expect(body).toHaveLength(1);
     expect(body[0]).toEqual(expect.objectContaining(livroDTO));
   });
+
+  test('Deve retornar um array vazio ao buscar um livro por nome ou ISBN e nada for encontrado', async function () {
+    const { statusCode, body } = await request(app)
+      .get('/livros')
+      .query({ valor: 'qualquer_ISBN' });
+
+    expect(statusCode).toBe(200);
+    expect(body).toHaveLength(0);
+  });
 });
