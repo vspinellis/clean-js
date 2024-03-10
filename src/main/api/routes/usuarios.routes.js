@@ -13,7 +13,7 @@ usuariosRoutes.post('/', async (request, response) => {
   return response.status(statusCode).json(body);
 });
 
-usuariosRoutes.get('/cpf/:cpf', async (request, response) => {
+usuariosRoutes.get('/cpf/:CPF', async (request, response) => {
   const httpRequest = {
     params: request.params
   };

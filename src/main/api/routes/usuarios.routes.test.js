@@ -35,4 +35,20 @@ describe('Usuarios Routes', function () {
       email: ['Email é obrigatório']
     });
   });
+
+  test('Deve retornar um usuario ao buscar pelo CPF', async function () {
+    const usuarioDTO = {
+      nome_completo: 'qualquer_nome',
+      CPF: '123.123.123-12',
+      endereco: 'endereco_valido',
+      telefone: 'telefone_valido',
+      email: 'email_valido'
+    };
+    await typeormUsuariosRepository.save(usuarioDTO);
+
+    const { statusCode, body } = await request(app).get('/usuarios/cpf/123.123.123-12');
+    expect(body.id).toBeDefined();
+    expect(statusCode).toBe(200);
+    expect(body).toEqual(expect.objectContaining(usuarioDTO));
+  });
 });
