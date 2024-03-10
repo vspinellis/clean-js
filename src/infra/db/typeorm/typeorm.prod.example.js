@@ -1,6 +1,4 @@
-let typeormServer;
-
-typeormServer = new typeorm.DataSource({
+module.exports = {
   type: '',
   host: '',
   database: '',
@@ -9,6 +7,4 @@ typeormServer = new typeorm.DataSource({
   password: '',
   synchronize: false,
   entities: [resolve(__dirname, 'entities/*.entity-typeorm.js')]
-});
-
-module.exports = { typeormServer };
+};
