@@ -4,7 +4,7 @@ const { AppError } = require('../../shared/errors');
 
 const zodValidatorBody = z.object({
   data_devolucao: z.string({
-    required_error: 'Date devolução é obrigatória'
+    required_error: 'Data devolução é obrigatória'
   })
 });
 
