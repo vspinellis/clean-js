@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const typeorm = require('typeorm');
+const typeormProd = require('./typeorm.prod');
 
 let typeormServer;
 
@@ -23,16 +24,7 @@ if (process.env.NODE_ENV === 'test') {
     entities: [resolve(__dirname, 'entities/*.entity-typeorm.js')]
   });
 } else {
-  typeormServer = new typeorm.DataSource({
-    type: 'postgres',
-    host: 'localhost',
-    database: 'biblioteca',
-    port: 5432,
-    username: 'postgres',
-    password: 'postgres',
-    synchronize: false,
-    entities: [resolve(__dirname, 'entities/*.entity-typeorm.js')]
-  });
+  typeormServer = new typeorm.DataSource(typeormProd);
 }
 
 module.exports = { typeormServer };
