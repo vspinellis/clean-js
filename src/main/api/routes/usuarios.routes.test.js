@@ -21,4 +21,10 @@ describe('Usuarios Routes', function () {
     expect(statusCode).toBe(201);
     expect(body).toBeNull();
   });
+
+  test('Deve retornar um erro com os campos obrigatórios ausentes', async function () {
+    const { statusCode, body } = await request(app).post('/usuarios').send({});
+
+    console.log(statusCode, body);
+  });
 });
