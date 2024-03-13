@@ -1,10 +1,8 @@
 # **Clean Architecture com Javascript**
 
-[![Logo Udemy](https://img-c.udemycdn.com/course/750x422/5838142_419c_2.jpg)]([https://www.udemy.com](https://www.udemy.com/course/draft/5838142/?referralCode=C538254C2A0FE027B175))
+![Logo Udemy](https://img-c.udemycdn.com/course/750x422/5838142_419c_2.jpg)
 
----
-
-## [*Comprar com desconto especial*]([https://www.udemy.com](https://www.udemy.com/course/draft/5838142/?referralCode=C538254C2A0FE027B175))
+## [Comprar o curso completo](https://www.udemy.com/course/draft/5838142/?referralCode=C538254C2A0FE027B175)
 
 > Esse repositório faz parte de um curso do professor Marcos Vinicius Spinellis na udemy.
 
